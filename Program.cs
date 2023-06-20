@@ -8,7 +8,7 @@
         string apellido = string.Empty;
         string direccion = "";
         // const double iva = 19.00;
-        // bool estado = false;
+        bool estado = false;
 
         try{
             Console.WriteLine("Ingrese el nombre:");
@@ -24,8 +24,18 @@
                 Console.WriteLine("{0} {1} Es un adolescente", nombre, apellido);
             }else if(edad > 17 && edad <=59){
                 Console.WriteLine("{0} {1} Es mayor de edad", nombre, apellido);
+                estado = true;
             }else{
+                estado = true;
                 Console.WriteLine("{0} {1} Es un adulto mayor", nombre, apellido);
+            }
+            switch(estado){
+                case true:
+                    Console.WriteLine("{0} {1} Puede ingresar al evento", nombre, apellido);
+                    break;
+                default:
+                    Console.WriteLine("{0} {1} No puede ingresar al evento", nombre, apellido);
+                    break;
             }
             Console.WriteLine("{0} {1} Ingrese su dirección: ", nombre, apellido);
             direccion = Console.ReadLine() ?? String.Empty;
