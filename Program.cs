@@ -3,7 +3,7 @@
     private static void Main(string[] args)
     {
         // [Modificador de Acceso] tipo Identificador;
-        int edad;
+        int edad = 0;
         string ? nombre;
         string apellido = string.Empty;
         string direccion = "";
@@ -16,8 +16,22 @@
             Console.Beep();
             Console.WriteLine("{0} ingrese su apellido", nombre.ToUpper());
             apellido = Console.ReadLine() ?? String.Empty;
-            Console.WriteLine("{0} {1} Ingrese su edad: ", nombre, apellido);
-            edad = Convert.ToInt16(Console.ReadLine());
+            bool estadoEdad = false;
+            while (estadoEdad == false){
+
+                try{
+                    Console.WriteLine("{0} {1} Ingrese su edad: ", nombre, apellido);
+                    edad = Convert.ToInt16(Console.ReadLine());
+                    estadoEdad = true;
+                }catch(Exception){
+                    Console.WriteLine("La edad no puede estar vacía o tener valores de string");
+                    Console.ReadKey();
+                    for(int i=0; i<=3; i++){
+                        Console.Beep();
+                    }
+                    estadoEdad = false;
+                }
+
             if(edad >= 1 && edad <=11){
                 Console.WriteLine("{0} {1} Es un niño", nombre, apellido);
             }else if(edad > 11 && edad <=17){
